@@ -59,7 +59,7 @@
     {
         packages."x86_64-linux".default = pkgs.writeShellApplication {
             name = "nvim";
-            runtimeInputs = [ pkgs.neovim ];
+            runtimeInputs = [  ];
             text = ''
                 ${neovimWrapped}/bin/nvim "$@"
             '';

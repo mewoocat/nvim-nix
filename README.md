@@ -1,11 +1,12 @@
 My personal NeoVim configuration packages as a nix flake.
 
 ### Build
-`nix flake .#`
+`nix build .#`
 
 ### Run
-`nix run github:mewoocat/nvim-nix`
+Locally:   `nix run .#`
+Remotely:  `nix run github:mewoocat/nvim-nix`
 
 
-tyy to:
+ty to:
 - https://github.com/QuantumCoded/neovim
