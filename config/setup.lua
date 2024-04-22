@@ -79,7 +79,7 @@ vim.opt.shiftwidth = 4 -- Number of spaces inserted when indenting
 
 -- Mappings
 --------------------------------------------------------------
-vim.keymap.set('n', "<Leader>e", ":Neotree toggle<cr>")
+vim.keymap.set('n', "<Leader>e", ":Neotree toggle right<cr>")
 vim.keymap.set('n', '<leader>n', ":bnext<cr>", {})
 vim.keymap.set('n', '<leader>b', ":bprev<cr>", {})
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleMouse>", "<Nop>") -- Disable middle mouse paste
