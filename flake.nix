@@ -7,6 +7,8 @@
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
         #plugins = pkgs.callPackage ./plugins.nix { };
         #config = pkgs.callPackage ./
+        toLua = str: "lua << EOF\n${str}\nEOF\n"; # Run lua string as vimscript
+        toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n"; # Run lua file as vimscript
         plugins = with pkgs.vimPlugins; [
           {
             plugin = nvim-treesitter.withAllGrammars;
@@ -18,7 +20,7 @@
           }
           {
             plugin = bufferline-nvim;
-            #config = toLua "require(\"bufferline\").setup()";
+            config = toLua "require(\"bufferline\").setup()";
           }
           {
             plugin = neo-tree-nvim;
