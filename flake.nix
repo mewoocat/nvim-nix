@@ -6,48 +6,10 @@
     outputs = { self, ... }@inputs: let
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
         plugins = pkgs.callPackage ./plugins.nix { };
-        /*
-        plugins = with pkgs.vimPlugins; [
-          {
-            plugin = nvim-treesitter.withAllGrammars;
-            config = ""; 
-          }
-          {
-            plugin = telescope-nvim;
-            #config = toLuaFile ./telescope.lua;
-          }
-          {
-            plugin = bufferline-nvim;
-            config = toLua "require(\"bufferline\").setup()";
-          }
-          {
-            plugin = neo-tree-nvim;
-            config = "";
-          }
-          {
-            plugin = pywal-nvim;
-            config = "";
-          } 
-          {
-            plugin = wal-vim;
-            config = "";
-          } 
-          {
-            plugin = indent-blankline-nvim;
-            #config = toLua "require(\"ibl\").setup()";
-          }
-          {
-            plugin = neogit;
-            config = "";
-          }
-        ];
-        */
-
         # Copy config files to output path
         neovimConfigFiles = pkgs.callPackage ./config { };
         # Vimscript config
-        config = "luafile ${neovimConfigFiles}/lua/setup.lua";
-
+        config = "luafile ${neovimConfigFiles}/setup.lua";
         neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
             customRC = config;
             plugins = plugins;
