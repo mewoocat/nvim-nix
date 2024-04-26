@@ -5,10 +5,8 @@
     };
     outputs = { self, ... }@inputs: let
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        #plugins = pkgs.callPackage ./plugins.nix { };
-        #config = pkgs.callPackage ./
-        toLua = str: "lua << EOF\n${str}\nEOF\n"; # Run lua string as vimscript
-        toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n"; # Run lua file as vimscript
+        plugins = pkgs.callPackage ./plugins.nix { };
+        /*
         plugins = with pkgs.vimPlugins; [
           {
             plugin = nvim-treesitter.withAllGrammars;
@@ -43,15 +41,13 @@
             config = "";
           }
         ];
+        */
 
         # Copy config files to output path
-        neovimConfigFiles = pkgs.callPackage ./config.nix {};
-        # TODO: Figure out why setup.lua is not in /config 
-        config = "luafile ${neovimConfigFiles}/setup.lua";
+        neovimConfigFiles = pkgs.callPackage ./config { };
+        # Vimscript config
+        config = "luafile ${neovimConfigFiles}/lua/setup.lua";
 
-
-        #config = "luafile ./setup.lua";
-    
         neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
             customRC = config;
             plugins = plugins;

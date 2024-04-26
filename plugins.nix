@@ -1,4 +1,7 @@
-{pkgs}:
+{pkgs}: let
+  toLua = str: "lua << EOF\n${str}\nEOF\n"; # Run lua string as vimscript
+  toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n"; # Run lua file as vimscript
+in
 with pkgs.vimPlugins; [
   {
     plugin = nvim-treesitter.withAllGrammars;
@@ -10,7 +13,7 @@ with pkgs.vimPlugins; [
   }
   {
     plugin = bufferline-nvim;
-    #config = toLua "require(\"bufferline\").setup()";
+    config = toLua "require(\"bufferline\").setup()";
   }
   {
     plugin = neo-tree-nvim;
@@ -32,4 +35,4 @@ with pkgs.vimPlugins; [
     plugin = neogit;
     config = "";
   }
-];
+]
