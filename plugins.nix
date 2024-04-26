@@ -29,7 +29,7 @@ with pkgs.vimPlugins; [
   } 
   {
     plugin = indent-blankline-nvim;
-    #config = toLua "require(\"ibl\").setup()";
+    config = toLua "require(\"ibl\").setup()";
   }
   {
     plugin = neogit;
