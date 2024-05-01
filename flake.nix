@@ -9,12 +9,18 @@
         # Copy config files to output path
         neovimConfigFiles = pkgs.callPackage ./config { };
         # Vimscript config
-        config = "luafile ${neovimConfigFiles}/setup.lua";
+        config = "luafile ${neovimConfigFiles}/init.lua";
         neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
             customRC = config;
             plugins = plugins;
         };
         neovimWrapped = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped neovimConfig;
+        /*
+        neovimWrapped = pkgs.wrapNeovimUnstable {
+            pkgs.neovim-unwrapped;
+            luaRcContent = ${neovimConfigFiles}/setup.lua";
+            #neovimConfig;
+        */
     in
     {
         packages."x86_64-linux".default = pkgs.writeShellApplication {

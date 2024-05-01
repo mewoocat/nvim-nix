@@ -35,7 +35,7 @@ vim.keymap.set('n', '<leader>f', builtin.live_grep, {})
 vim.opt.wrap = false
 vim.opt.clipboard = "unnamedplus" -- External clipboard support
 vim.opt.number = true
-vim.opt.relativenumber = true
+--vim.opt.relativenumber = true
 vim.opt.mouse = ""
 
 --vim.opt.termguicolors = true
@@ -95,3 +95,5 @@ vim.keymap.set('n', '<leader>w', ":bd<cr>")
 -- Testing this at the end since it seems that after launching nvim, i have to
 -- set the colorscheme to wal for all elements to take effect
 vim.cmd.colorscheme = "wal"
+
+

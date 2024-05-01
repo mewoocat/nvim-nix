@@ -9,7 +9,7 @@ with pkgs.vimPlugins; [
   }
   {
     plugin = telescope-nvim;
-    #config = toLuaFile ./telescope.lua;
+    config = "";
   }
   {
     plugin = bufferline-nvim;
