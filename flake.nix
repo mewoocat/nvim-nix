@@ -5,22 +5,12 @@
     };
     outputs = { self, ... }@inputs: let
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        plugins = pkgs.callPackage ./plugins.nix { };
-        # Copy config files to output path
-        neovimConfigFiles = pkgs.callPackage ./config { };
-        # Vimscript config
-        config = "luafile ${neovimConfigFiles}/init.lua";
+        neovimConfigFiles = pkgs.callPackage ./config { }; # Copy config files to output path
         neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
-            customRC = config;
-            plugins = plugins;
+            customRC = "luafile ${neovimConfigFiles}/init.lua"; # Vimscript config
+            plugins = pkgs.callPackage ./plugins.nix { };
         };
         neovimWrapped = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped neovimConfig;
-        /*
-        neovimWrapped = pkgs.wrapNeovimUnstable {
-            pkgs.neovim-unwrapped;
-            luaRcContent = ${neovimConfigFiles}/setup.lua";
-            #neovimConfig;
-        */
     in
     {
         packages."x86_64-linux".default = pkgs.writeShellApplication {
