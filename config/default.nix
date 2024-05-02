@@ -12,8 +12,9 @@ let
             cp -r $src $out
         '';
     };
-    luaFilesContents = map (file: builtins.readFile "${neovim-config}/${file}") luaFiles;
-    luaFilesToViml = map (file: "luafile ${file}") luaFilesContents;
+    # this needs to be path not contents
+    #luaFilesContents = map (file: builtins.readFile "${neovim-config}/${file}") luaFiles;
+    luaFilesToViml = map (file: "luafile ${neovim-config}/${file}") luaFiles;
     luaFilesCat = pkgs.lib.strings.concatStringsSep "\n" luaFilesToViml;
 in
     luaFilesCat
