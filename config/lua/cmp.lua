@@ -1,3 +1,6 @@
+
+-- From: https://github.com/hrsh7th/nvim-cmp
+
 -- Set up nvim-cmp.
 local cmp = require'cmp'
 
@@ -72,4 +75,13 @@ require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
 capabilities = capabilities
 }
 --]]
+
+-- Autopairs
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local autopairs = require('nvim-autopairs')
+autopairs.setup {}
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 

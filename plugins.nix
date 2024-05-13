@@ -60,4 +60,7 @@ with pkgs.vimPlugins; [
     plugin = nvim-cmp;
     config = "";
   }
+  {
+    plugin = nvim-autopairs;
+  }
 ]
