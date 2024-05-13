@@ -5,11 +5,9 @@ in
 with pkgs.vimPlugins; [
   {
     plugin = nvim-treesitter.withAllGrammars;
-    config = ""; 
   }
   {
     plugin = telescope-nvim;
-    config = "";
   }
   {
     plugin = bufferline-nvim;
@@ -17,15 +15,12 @@ with pkgs.vimPlugins; [
   }
   {
     plugin = neo-tree-nvim;
-    config = "";
   }
   {
     plugin = pywal-nvim;
-    config = "";
   } 
   {
     plugin = wal-vim;
-    config = "";
   } 
   {
     plugin = indent-blankline-nvim;
@@ -33,32 +28,29 @@ with pkgs.vimPlugins; [
   }
   {
     plugin = neogit;
-    config = "";
   }
+  {
+    plugin = lualine-nvim;
+  }
+
   # cmp
   {
     plugin = nvim-lspconfig;
-    config = "";
   }
   {
     plugin = cmp-nvim-lsp;
-    config = "";
   }
   {
     plugin = cmp-buffer;
-    config = "";
   }
   {
     plugin = cmp-path;
-    config = "";
   }
   {
     plugin = cmp-cmdline;
-    config = "";
   }
   {
     plugin = nvim-cmp;
-    config = "";
   }
   {
     plugin = nvim-autopairs;
