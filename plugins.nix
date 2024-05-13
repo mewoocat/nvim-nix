@@ -35,4 +35,29 @@ with pkgs.vimPlugins; [
     plugin = neogit;
     config = "";
   }
+  # cmp
+  {
+    plugin = nvim-lspconfig;
+    config = "";
+  }
+  {
+    plugin = cmp-nvim-lsp;
+    config = "";
+  }
+  {
+    plugin = cmp-buffer;
+    config = "";
+  }
+  {
+    plugin = cmp-path;
+    config = "";
+  }
+  {
+    plugin = cmp-cmdline;
+    config = "";
+  }
+  {
+    plugin = nvim-cmp;
+    config = "";
+  }
 ]

@@ -3,6 +3,7 @@ let
     luaFiles = [
         "setup.lua"
         "test.lua"
+        "cmp.lua"
     ];
     # Creates derivation that copies lua setup file to derivation path
     neovim-config = pkgs.stdenv.mkDerivation {
