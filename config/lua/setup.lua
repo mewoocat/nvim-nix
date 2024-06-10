@@ -26,6 +26,7 @@ neogit.setup {}
 local builtin = require('telescope.builtin') -- Import telescope functions
 vim.keymap.set('n', '<leader>o', builtin.find_files, {})
 vim.keymap.set('n', '<leader>f', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>p', builtin.buffers, {})
 
 
 
