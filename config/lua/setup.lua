@@ -12,6 +12,12 @@ vim.cmd.colorscheme = "wal" -- use wal or fork it.  pywal-nvim is borked for rel
 --vim.cmd("colorscheme pywal") -- Appears to require theme reload for syntax colors
 ---- DO I even need pywal for syncing terminal (pywal) colors with nvim???
 
+
+-- Sorta works (maybe look into this later)
+--local neopywal = require("neopywal")
+--neopywal.setup()
+--vim.cmd.colorscheme("neopywal")
+
 -- Setup neogit
 --------------------------------------------------------------
 local neogit = require('neogit')
@@ -93,8 +99,10 @@ vim.keymap.set('n', '<leader>w', ":bd<cr>")
 --]]
 
 
--- Testing this at the end since it seems that after launching nvim, i have to
--- set the colorscheme to wal for all elements to take effect
-vim.cmd.colorscheme = "wal"
 
+-- Auto sets wal theme on startup
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = "*",
+  command = "colorscheme wal",
+})
 
