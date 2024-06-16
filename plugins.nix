@@ -11,7 +11,7 @@ with pkgs.vimPlugins; [
   }
   {
     plugin = bufferline-nvim;
-    config = toLua "require(\"bufferline\").setup()";
+    #config = toLua "require(\"bufferline\").setup()";
   }
   {
     plugin = neo-tree-nvim;
