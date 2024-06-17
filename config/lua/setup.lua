@@ -8,7 +8,7 @@ vim.g.mapleader = " " -- Set leader to space
 --------------------------------------------------------------
 --local pywal = require('pywal')
 --pywal.setup()
-vim.cmd.colorscheme = "wal" -- use wal or fork it.  pywal-nvim is borked for reload
+--vim.cmd.colorscheme = "wal" -- use wal or fork it.  pywal-nvim is borked for reload
 --vim.cmd("colorscheme pywal") -- Appears to require theme reload for syntax colors
 ---- DO I even need pywal for syncing terminal (pywal) colors with nvim???
 
@@ -101,8 +101,10 @@ vim.keymap.set('n', '<leader>w', ":bd<cr>")
 
 
 -- Auto sets wal theme on startup
+--[[
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   pattern = "*",
   command = "colorscheme wal",
 })
 
+--]]
