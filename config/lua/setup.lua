@@ -86,6 +86,46 @@ vim.keymap.set('n', '<leader>w', ":bd<cr>")
 
 --vim.cmd("nnoremap <silent> <esc><esc> :nohlsearch<CR><esc>")
 
+
+-- Per filetype config
+--------------------------------------------------------------
+--[[
+vim.cmd [[
+  augroup NixIndent
+    autocmd FileType nix setlocal expandtab
+    autocmd FileType nix setlocal tabstop=2
+    autocmd FileType nix setlocal shiftwidth=2
+    autocmd FileType nix setlocal softtabstop=2
+  augroup END
+]]
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function() 
+    vim.opt.tabstop = 4
+    vim.opt.softtabstop = 4
+    vim.opt.shiftwidth = 4
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "nix",
+  callback = function() 
+    vim.opt.tabstop = 2
+    vim.opt.softtabstop = 2
+    vim.opt.shiftwidth = 2
+  end,
+})
+
+
+
+
+
+
+
+
+
+
 -- Testing
 --------------------------------------------------------------
 --vim.cmd("autocmd BufWritePost ~/.cache/wal/colors-wal.vim :source ~/.config/nvim/init.lua")
@@ -107,13 +147,10 @@ vim.keymap.set('n', '<leader>w', ":bd<cr>")
 --augroup END
 --]]
 
-
-
 -- Auto sets wal theme on startup
 --[[
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   pattern = "*",
   command = "colorscheme wal",
 })
-
 --]]
