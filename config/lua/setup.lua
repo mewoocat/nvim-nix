@@ -89,31 +89,14 @@ vim.keymap.set('n', '<leader>w', ":bd<cr>")
 
 -- Per filetype config
 --------------------------------------------------------------
---[[
-vim.cmd [[
-  augroup NixIndent
-    autocmd FileType nix setlocal expandtab
-    autocmd FileType nix setlocal tabstop=2
-    autocmd FileType nix setlocal shiftwidth=2
-    autocmd FileType nix setlocal softtabstop=2
-  augroup END
-]]
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",
-  callback = function() 
-    vim.opt.tabstop = 4
-    vim.opt.softtabstop = 4
-    vim.opt.shiftwidth = 4
-  end,
-})
-
+-- opt_local only affects the current buffer
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "nix",
   callback = function() 
-    vim.opt.tabstop = 2
-    vim.opt.softtabstop = 2
-    vim.opt.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
   end,
 })
 
