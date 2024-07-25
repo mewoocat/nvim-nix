@@ -8,9 +8,15 @@ vim.g.mapleader = " " -- Set leader to space
 --------------------------------------------------------------
 --local pywal = require('pywal')
 --pywal.setup()
-vim.cmd.colorscheme = "wal" -- use wal or fork it.  pywal-nvim is borked for reload
+--vim.cmd.colorscheme = "wal" -- use wal or fork it.  pywal-nvim is borked for reload
 --vim.cmd("colorscheme pywal") -- Appears to require theme reload for syntax colors
 ---- DO I even need pywal for syncing terminal (pywal) colors with nvim???
+
+
+-- Sorta works (maybe look into this later)
+--local neopywal = require("neopywal")
+--neopywal.setup()
+--vim.cmd.colorscheme("neopywal")
 
 -- Setup neogit
 --------------------------------------------------------------
@@ -23,6 +29,15 @@ neogit.setup {}
 
 -- Setup telescope
 --------------------------------------------------------------
+require('telescope').setup{
+    pickers = {
+        buffers = {
+            sort_lastused = true,
+            sort_mru = true,
+            ignore_current_buffer = true,
+        }
+    }
+}
 local builtin = require('telescope.builtin') -- Import telescope functions
 vim.keymap.set('n', '<leader>o', builtin.find_files, {})
 vim.keymap.set('n', '<leader>f', builtin.live_grep, {})
@@ -72,6 +87,29 @@ vim.keymap.set('n', '<leader>w', ":bd<cr>")
 
 --vim.cmd("nnoremap <silent> <esc><esc> :nohlsearch<CR><esc>")
 
+
+-- Per filetype config
+--------------------------------------------------------------
+
+-- opt_local only affects the current buffer
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "nix",
+  callback = function() 
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
+  end,
+})
+
+
+
+
+
+
+
+
+
+
 -- Testing
 --------------------------------------------------------------
 --vim.cmd("autocmd BufWritePost ~/.cache/wal/colors-wal.vim :source ~/.config/nvim/init.lua")
@@ -93,9 +131,10 @@ vim.keymap.set('n', '<leader>w', ":bd<cr>")
 --augroup END
 --]]
 
-
--- Testing this at the end since it seems that after launching nvim, i have to
--- set the colorscheme to wal for all elements to take effect
-vim.cmd.colorscheme = "wal"
-
-
+-- Auto sets wal theme on startup
+--[[
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = "*",
+  command = "colorscheme wal",
+})
+--]]

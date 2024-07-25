@@ -1,6 +1,6 @@
 {pkgs}: let
-  toLua = str: "lua << EOF\n${str}\nEOF\n"; # Run lua string as vimscript
-  toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n"; # Run lua file as vimscript
+    toLua = str: "lua << EOF\n${str}\nEOF\n"; # Run lua string as vimscript
+    toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n"; # Run lua file as vimscript
 in
 with pkgs.vimPlugins; [
   {
@@ -11,7 +11,7 @@ with pkgs.vimPlugins; [
   }
   {
     plugin = bufferline-nvim;
-    config = toLua "require(\"bufferline\").setup()";
+    #config = toLua "require(\"bufferline\").setup()";
   }
   {
     plugin = neo-tree-nvim;
@@ -55,4 +55,21 @@ with pkgs.vimPlugins; [
   {
     plugin = nvim-autopairs;
   }
+
+] 
+
+# Build and add plugins not in nixpkgs
+++ [
+    {
+        plugin = pkgs.vimUtils.buildVimPlugin {
+          pname = "neopywal";
+          version = "";
+          src = builtins.fetchGit {
+            url = "https://github.com/RedsXDD/neopywal.nvim.git";
+            ref = "master";
+            rev = "57fb800ccc1c2dd2f6623b82ef3612927a36fd4a";
+          };
+          #buildScript = ":";
+        };
+    }
 ]
