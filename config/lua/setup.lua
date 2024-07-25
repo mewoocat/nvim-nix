@@ -36,6 +36,7 @@ vim.keymap.set('n', '<leader>p', builtin.buffers, {})
 vim.opt.wrap = false
 vim.opt.clipboard = "unnamedplus" -- External clipboard support
 vim.opt.number = true
+vim.opt.laststatus = 0 -- Never show status line
 --vim.opt.relativenumber = true
 vim.opt.mouse = ""
 
