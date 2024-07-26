@@ -5,9 +5,7 @@
     };
     outputs = { self, ... }@inputs: let
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        #neovimConfigFiles = pkgs.callPackage ./config { }; # Copy config files to output path
-
-          
+        #neovimConfigFiles = pkgs.callPackage ./config { }; # Copy config files to output path          
 
         neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
             #customRC = "luafile ${neovimConfigFiles}/init.lua"; # Vimscript config

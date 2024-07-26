@@ -4,6 +4,10 @@
 in
 with pkgs.vimPlugins; [
   {
+    # Icons
+    plugin = nvim-web-devicons;
+  }
+  {
     plugin = nvim-treesitter.withAllGrammars;
   }
   {
