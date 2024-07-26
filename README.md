@@ -7,8 +7,8 @@ The key properties of this nvim config
 
 # Installation
 ## Run temporarily
-Locally:   `nix run .#`
-Remotely:  `nix run github:mewoocat/nvim-nix`
+- Locally:   `nix run .#`
+- Remotely:  `nix run github:mewoocat/nvim-nix`
 
 ## Flake
 Add to flake inputs,
