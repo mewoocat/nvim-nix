@@ -4,6 +4,9 @@
 in
 with pkgs.vimPlugins; [
   {
+    plugin = fwatch-nvim;
+  }
+  {
     # Icons
     plugin = nvim-web-devicons;
   }
