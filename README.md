@@ -7,7 +7,6 @@ The key properties of this nvim config
 - A focus on using lua for config
 
 # Installation
----
 ## Run temporarily
 Locally:   `nix run .#`
 Remotely:  `nix run github:mewoocat/nvim-nix`
@@ -27,7 +26,6 @@ Then add `inputs.myNvim.packages.x86_64-linux.default` to system or homemanager 
 todo
 
 # Usage
----
 Run
 ```
 nvim
@@ -35,6 +33,5 @@ nvim
 
 
 # Credits
----
 ty to :)
 - https://github.com/QuantumCoded/neovim
