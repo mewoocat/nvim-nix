@@ -22,10 +22,20 @@ inputs = {
 Then add `inputs.myNvim.packages.x86_64-linux.default` to system or homemanager packages.
 
 ## Nix-env
+
+#### Install nix & enable flakes
+```
+sh <(curl -L https://nixos.org/nix/install) --daemon
+export NIX_CONFIG="experimental-features = nix-command flakes"
+```
+
+`nix run github:mewoocat/NixOS#nvim`
+
+`nix profile install github:mewoocat/NixOS#nvim`
 todo
 
 # Usage
-Run
+## Running
 ```
 nvim
 ```
